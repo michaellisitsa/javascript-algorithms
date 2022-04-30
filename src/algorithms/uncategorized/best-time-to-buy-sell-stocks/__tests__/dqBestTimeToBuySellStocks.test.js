@@ -1,3 +1,4 @@
+import { jest } from '@jest/globals';
 import dqBestTimeToBuySellStocks from '../dqBestTimeToBuySellStocks';
 
 describe('dqBestTimeToBuySellStocks', () => {
@@ -23,7 +24,9 @@ describe('dqBestTimeToBuySellStocks', () => {
     expect(visit).toHaveBeenCalledTimes(15);
 
     visit = jest.fn();
-    expect(dqBestTimeToBuySellStocks([10, 1, 5, 20, 15, 21], visit)).toEqual(25);
+    expect(dqBestTimeToBuySellStocks([10, 1, 5, 20, 15, 21], visit)).toEqual(
+      25,
+    );
     expect(visit).toHaveBeenCalledTimes(127);
 
     visit = jest.fn();
@@ -39,10 +42,12 @@ describe('dqBestTimeToBuySellStocks', () => {
     expect(visit).toHaveBeenCalledTimes(63);
 
     visit = jest.fn();
-    expect(dqBestTimeToBuySellStocks(
-      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
-      visit,
-    )).toEqual(19);
+    expect(
+      dqBestTimeToBuySellStocks(
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+        visit,
+      ),
+    ).toEqual(19);
     expect(visit).toHaveBeenCalledTimes(2097151);
   });
 });

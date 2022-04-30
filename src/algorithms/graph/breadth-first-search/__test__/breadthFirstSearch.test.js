@@ -1,3 +1,4 @@
+import { jest } from '@jest/globals';
 import Graph from '../../../../data-structures/graph/Graph';
 import GraphVertex from '../../../../data-structures/graph/GraphVertex';
 import GraphEdge from '../../../../data-structures/graph/GraphEdge';
@@ -65,10 +66,18 @@ describe('breadthFirstSearch', () => {
       { currentVertex: vertexG, previousVertex: vertexF },
     ];
 
-    for (let callIndex = 0; callIndex < graph.getAllVertices().length; callIndex += 1) {
+    for (
+      let callIndex = 0;
+      callIndex < graph.getAllVertices().length;
+      callIndex += 1
+    ) {
       const params = enterVertexCallback.mock.calls[callIndex][0];
-      expect(params.currentVertex).toEqual(enterVertexParamsMap[callIndex].currentVertex);
-      expect(params.previousVertex).toEqual(enterVertexParamsMap[callIndex].previousVertex);
+      expect(params.currentVertex).toEqual(
+        enterVertexParamsMap[callIndex].currentVertex,
+      );
+      expect(params.previousVertex).toEqual(
+        enterVertexParamsMap[callIndex].previousVertex,
+      );
     }
 
     const leaveVertexParamsMap = [
@@ -82,10 +91,18 @@ describe('breadthFirstSearch', () => {
       { currentVertex: vertexG, previousVertex: vertexF },
     ];
 
-    for (let callIndex = 0; callIndex < graph.getAllVertices().length; callIndex += 1) {
+    for (
+      let callIndex = 0;
+      callIndex < graph.getAllVertices().length;
+      callIndex += 1
+    ) {
       const params = leaveVertexCallback.mock.calls[callIndex][0];
-      expect(params.currentVertex).toEqual(leaveVertexParamsMap[callIndex].currentVertex);
-      expect(params.previousVertex).toEqual(leaveVertexParamsMap[callIndex].previousVertex);
+      expect(params.currentVertex).toEqual(
+        leaveVertexParamsMap[callIndex].currentVertex,
+      );
+      expect(params.previousVertex).toEqual(
+        leaveVertexParamsMap[callIndex].previousVertex,
+      );
     }
   });
 
@@ -151,8 +168,12 @@ describe('breadthFirstSearch', () => {
 
     for (let callIndex = 0; callIndex < 7; callIndex += 1) {
       const params = enterVertexCallback.mock.calls[callIndex][0];
-      expect(params.currentVertex).toEqual(enterVertexParamsMap[callIndex].currentVertex);
-      expect(params.previousVertex).toEqual(enterVertexParamsMap[callIndex].previousVertex);
+      expect(params.currentVertex).toEqual(
+        enterVertexParamsMap[callIndex].currentVertex,
+      );
+      expect(params.previousVertex).toEqual(
+        enterVertexParamsMap[callIndex].previousVertex,
+      );
     }
 
     const leaveVertexParamsMap = [
@@ -167,8 +188,12 @@ describe('breadthFirstSearch', () => {
 
     for (let callIndex = 0; callIndex < 7; callIndex += 1) {
       const params = leaveVertexCallback.mock.calls[callIndex][0];
-      expect(params.currentVertex).toEqual(leaveVertexParamsMap[callIndex].currentVertex);
-      expect(params.previousVertex).toEqual(leaveVertexParamsMap[callIndex].previousVertex);
+      expect(params.currentVertex).toEqual(
+        leaveVertexParamsMap[callIndex].currentVertex,
+      );
+      expect(params.previousVertex).toEqual(
+        leaveVertexParamsMap[callIndex].previousVertex,
+      );
     }
   });
 });

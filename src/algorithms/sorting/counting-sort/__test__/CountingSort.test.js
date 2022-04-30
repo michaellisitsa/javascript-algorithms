@@ -1,3 +1,4 @@
+import { jest } from '@jest/globals';
 import CountingSort from '../CountingSort';
 import {
   equalArr,
@@ -32,7 +33,11 @@ describe('CountingSort', () => {
     // Detect smallest number in array in prior.
     const smallestElement = Math.min(...notSortedArr);
 
-    const sortedArray = sorter.sort(notSortedArr, smallestElement, biggestElement);
+    const sortedArray = sorter.sort(
+      notSortedArr,
+      smallestElement,
+      biggestElement,
+    );
 
     expect(sortedArray).toEqual(sortedArr);
     // Normally visitingCallback is being called 60 times but in this case
