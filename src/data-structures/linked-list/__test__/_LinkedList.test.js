@@ -1,4 +1,4 @@
-import LinkedList from '../_LinkedList';
+import LinkedList from '../_LinkedList.mjs';
 
 describe('LinkedList', () => {
   it('should create empty linked list', () => {
