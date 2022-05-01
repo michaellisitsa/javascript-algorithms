@@ -5,7 +5,7 @@ class LinkedListNode {
   }
 
   toString() {
-    return this.value;
+    return this.value.toString();
   }
 }
 
