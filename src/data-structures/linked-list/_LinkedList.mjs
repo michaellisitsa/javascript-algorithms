@@ -65,6 +65,10 @@ class LinkedList {
     // navigate via next pointers until you get to the index you're looking for.
     let currentNode = this.head;
     const index = rawIndex < 0 ? 0 : rawIndex;
+    if (index === 0) {
+      this.prepend(value);
+      return this;
+    }
     let currentIndex = 0;
     while (currentIndex < index - 1 && currentNode.next) {
       currentNode = currentNode.next;
