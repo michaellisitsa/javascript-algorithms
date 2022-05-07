@@ -82,14 +82,41 @@ class LinkedList {
     return this;
     // if there is no next pointer, just append to the tail.
   }
+
+  delete (value) {
+    let deletedNode = null;
+    if (!this.head) {
+      return null;
+    }
+    
+    while (this.head.value === value) {
+      deletedNode = this.head;
+      this.head = this.head.next;
+      if (!this.head) {
+        this.tail = null;
+        return deletedNode;
+      }
+    } 
+    
+    let currentNode = this.head;
+    while (currentNode.next !== this.tail) {
+      if (currentNode.next.value === value) {
+        deletedNode = currentNode.next;
+        currentNode.next = currentNode.next.next;
+      } 
+        else {
+        currentNode = currentNode.next;
+      }
+    }
+
+    if (this.tail.value === value) {
+      deletedNode = currentNode.next;
+      this.tail = currentNode
+      this.tail.next = null;
+    }
+    
+    return deletedNode;
+  }
 }
-// const linkedList = new LinkedList();
-// linkedList.append(10);
-// linkedList.append(11);
-// linkedList.append(12);
-// linkedList.append(13);
-// linkedList.insert(2, 4);
-// linkedList.insert(3, 5);
-// linkedList.insert(4, 6);
 
 export default LinkedList;
