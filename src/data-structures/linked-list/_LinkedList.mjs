@@ -83,12 +83,12 @@ class LinkedList {
     // if there is no next pointer, just append to the tail.
   }
 
-  delete (value) {
+  delete(value) {
     let deletedNode = null;
     if (!this.head) {
       return null;
     }
-    
+
     while (this.head.value === value) {
       deletedNode = this.head;
       this.head = this.head.next;
@@ -96,25 +96,48 @@ class LinkedList {
         this.tail = null;
         return deletedNode;
       }
-    } 
-    
+    }
+
     let currentNode = this.head;
     while (currentNode.next !== this.tail) {
       if (currentNode.next.value === value) {
         deletedNode = currentNode.next;
         currentNode.next = currentNode.next.next;
-      } 
-        else {
+      } else {
         currentNode = currentNode.next;
       }
     }
 
     if (this.tail.value === value) {
       deletedNode = currentNode.next;
-      this.tail = currentNode
+      this.tail = currentNode;
       this.tail.next = null;
     }
-    
+
+    return deletedNode;
+  }
+
+  deleteTail() {
+    if (!this.head) {
+      return null;
+    }
+    let deletedNode = null;
+    if (this.head === this.tail) {
+      deletedNode = this.head;
+      this.head = null;
+      this.tail = null;
+      return deletedNode;
+    }
+    // Find the item that is one from the last set its next to null.
+    // set tail to the above.
+    let currentNode = this.head;
+    while (currentNode.next !== this.tail) {
+      currentNode = currentNode.next;
+    }
+
+    deletedNode = currentNode.next;
+    currentNode.next = null;
+    this.tail = currentNode;
     return deletedNode;
   }
 }
