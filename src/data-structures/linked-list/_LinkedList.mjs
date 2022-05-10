@@ -161,6 +161,30 @@ class LinkedList {
     this.head = this.head.next;
     return deletedNode;
   }
+
+  find (filterItem) {
+    if (Object.keys.length > 1) {
+      console.log('Too many keys passed in')
+    }
+    if (!this.head) {
+      return null;
+    }
+
+    const key = Object.keys(filterItem)[0];
+    if (this.head === this.tail && this.head[key] === filterItem[key]) {
+      return this.head;
+    }
+    let currentNode = this.head;
+    while (currentNode && currentNode[key] !== filterItem[key]) {
+      currentNode = currentNode.next;
+    }
+
+    if (currentNode) {
+      return currentNode;
+    } else {
+      return null;
+    }
+  }
 }
 
 export default LinkedList;
