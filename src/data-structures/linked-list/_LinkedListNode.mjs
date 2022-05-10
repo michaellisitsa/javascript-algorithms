@@ -4,7 +4,10 @@ class LinkedListNode {
     this.next = next;
   }
 
-  toString() {
+  toString(filter) {
+    if (filter) {
+      return filter(this.value);
+    }
     return this.value.toString();
   }
 }

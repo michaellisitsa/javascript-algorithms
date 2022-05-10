@@ -20,7 +20,11 @@ class LinkedList {
     return nodes;
   }
 
-  toString() {
+  toString(filter) {
+    if (filter) {
+      let string = this.toArray().map(node => node.toString(filter)).toString();
+      return string;
+    }
     return this.toArray()
       .map((node) => node.toString())
       .toString();
