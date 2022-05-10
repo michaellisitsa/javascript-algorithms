@@ -140,6 +140,23 @@ class LinkedList {
     this.tail = currentNode;
     return deletedNode;
   }
+
+  deleteHead() {
+    if (!this.head) {
+      return null;
+    }
+    let deletedNode = null;
+    if (this.head === this.tail) {
+      deletedNode = this.head;
+      this.head = null;
+      this.tail = null;
+      return deletedNode;
+    }
+
+    deletedNode = this.head;
+    this.head = this.head.next;
+    return deletedNode;
+  }
 }
 
 export default LinkedList;
