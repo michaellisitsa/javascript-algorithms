@@ -29,7 +29,7 @@ class LinkedList {
       .map((node) => node.toString())
       .toString();
   }
-
+  
   append(value) {
     const node = new LinkedListNode(value);
     if (!this.head) {
