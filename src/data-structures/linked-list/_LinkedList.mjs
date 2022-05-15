@@ -22,7 +22,9 @@ class LinkedList {
 
   toString(filter) {
     if (filter) {
-      let string = this.toArray().map(node => node.toString(filter)).toString();
+      const string = this.toArray()
+        .map((node) => node.toString(filter))
+        .toString();
       return string;
     }
     return this.toArray()
@@ -162,28 +164,33 @@ class LinkedList {
     return deletedNode;
   }
 
-  find (filterItem) {
-    if (Object.keys.length > 1) {
-      console.log('Too many keys passed in')
-    }
+  find({ value = null, callback = null }) {
+    // let tempValue;
     if (!this.head) {
       return null;
     }
 
-    const key = Object.keys(filterItem)[0];
-    if (this.head === this.tail && this.head[key] === filterItem[key]) {
-      return this.head;
-    }
-    let currentNode = this.head;
-    while (currentNode && currentNode[key] !== filterItem[key]) {
-      currentNode = currentNode.next;
+    if (callback) {
+      if (this.head === this.tail && callback(this.head)) {
+        return this.head;
+      }
     }
 
-    if (currentNode) {
-      return currentNode;
-    } else {
+    if (value) {
+      if (this.head === this.tail && this.head.value === value) {
+        return this.head;
+      }
+      let currentNode = this.head;
+      while (currentNode && currentNode.value !== value) {
+        currentNode = currentNode.next;
+      }
+
+      if (currentNode) {
+        return currentNode;
+      }
       return null;
     }
+    return null;
   }
 }
 
