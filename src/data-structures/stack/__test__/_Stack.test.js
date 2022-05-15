@@ -37,7 +37,6 @@ describe('Stack', () => {
 
     expect(stack.isEmpty()).toBe(false);
   });
-
   it('should pop data from stack', () => {
     const stack = new Stack();
 

@@ -12,8 +12,20 @@ export default class Stack {
     return this.linkedList.prepend(value);
   }
 
-  toString () {
-    return this.linkedList.toString();
+  toString (callback) {
+    return this.linkedList.toString(callback);
+  }
+
+  toArray() {
+    const nodes = [];
+
+    let currentNode = this.linkedList.head;
+    while (currentNode) {
+      nodes.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+
+    return nodes;
   }
 
   peek (value) {
