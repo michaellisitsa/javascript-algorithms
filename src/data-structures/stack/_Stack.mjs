@@ -8,11 +8,11 @@ export default class Stack {
     this.linkedList = new LinkedList();
   }
 
-  push (value) {
+  push(value) {
     return this.linkedList.prepend(value);
   }
 
-  toString (callback) {
+  toString(callback) {
     return this.linkedList.toString(callback);
   }
 
@@ -28,22 +28,22 @@ export default class Stack {
     return nodes;
   }
 
-  peek (value) {
+  peek() {
     if (!this.linkedList.head) {
-      return null
+      return null;
     }
-    return this.linkedList.head.value
+    return this.linkedList.head.value;
   }
 
-  isEmpty () {
-    return !this.linkedList.head
+  isEmpty() {
+    return !this.linkedList.head;
   }
 
-  pop () {
+  pop() {
     const deletedNode = this.linkedList.deleteHead();
     if (!deletedNode) {
       return null;
     }
-    return deletedNode.value
+    return deletedNode.value;
   }
 }
