@@ -174,6 +174,16 @@ class LinkedList {
       if (this.head === this.tail && callback(this.head)) {
         return this.head;
       }
+
+      let currentNode = this.head;
+      while (currentNode && !callback(currentNode.value)) {
+        currentNode = currentNode.next;
+      }
+
+      if (currentNode) {
+        return currentNode;
+      }
+      return null;
     }
 
     if (value) {
