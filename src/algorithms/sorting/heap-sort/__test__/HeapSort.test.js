@@ -1,10 +1,10 @@
 import HeapSort from '../HeapSort';
 import {
   equalArr,
+  SortTester,
   notSortedArr,
   reverseArr,
   sortedArr,
-  SortTester,
 } from '../../SortTester';
 
 // Complexity constants.
