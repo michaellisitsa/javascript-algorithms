@@ -1,4 +1,4 @@
-import Comparator from '../../utils/comparator/Comparator';
+import Comparator from "../../utils/comparator/Comparator";
 
 /**
  * Parent class for Min and Max Heaps.
@@ -10,7 +10,7 @@ export default class Heap {
    */
   constructor(comparatorFunction) {
     if (new.target === Heap) {
-      throw new TypeError('Cannot construct Heap instance directly');
+      throw new TypeError("Cannot construct Heap instance directly");
     }
 
     // Array representation of the heap.
@@ -23,7 +23,7 @@ export default class Heap {
    * @return {number}
    */
   getLeftChildIndex(parentIndex) {
-    return (2 * parentIndex) + 1;
+    return 2 * parentIndex + 1;
   }
 
   /**
@@ -31,7 +31,7 @@ export default class Heap {
    * @return {number}
    */
   getRightChildIndex(parentIndex) {
-    return (2 * parentIndex) + 2;
+    return 2 * parentIndex + 2;
   }
 
   /**
@@ -151,15 +151,36 @@ export default class Heap {
     // reimplement
     // item can have multiple instances.
     // store the number of instances matching an item.
+    const numberOfItems = this.find(item).length;
     // In a loop:
-    // use .find to get the top instance of item by index
-    // (Since index is being regenerated each time, need 
-    // to also run find each time.)
-    // Last child doesn't need to be heapified up.
-    // If not the last child, once removed move the last child
-    // to the removed position.
-    // Then check parent. Either navigate the node up or down,
-    // depending on whether its in the correct order.
+    for (let i = 0; i < numberOfItems; i += 1) {
+      // use .find to get the top instance of item by index
+      // (Since index is being regenerated each time, need
+      // to also run find each time.)
+      debugger;
+      const itemToDeleteIndex = this.find(item)[i];
+      if (itemToDeleteIndex === this.heapContainer.length) {
+        // Last child doesn't need to be heapified up.
+        this.heapContainer.pop();
+      } else {
+        // If not the last child, once removed move the last child
+        // to the removed position.
+        this.swap(itemToDeleteIndex, this.heapContainer.length - 1);
+        this.heapContainer.pop();
+        // Then check parent. Either navigate the node up or down,
+        if (
+          this.pairIsInCorrectOrder(
+            this.parent(itemToDeleteIndex),
+            this.heapContainer[itemToDeleteIndex]
+          )
+        ) {
+          this.heapifyDown(itemToDeleteIndex);
+        } else {
+          this.heapifyUp(ItemToDeleteIndex);
+        }
+      }
+      // depending on whether its in the correct order.
+    }
   }
 
   /**
@@ -170,7 +191,11 @@ export default class Heap {
   find(item, comparator = this.compare) {
     const foundItemIndices = [];
 
-    for (let itemIndex = 0; itemIndex < this.heapContainer.length; itemIndex += 1) {
+    for (
+      let itemIndex = 0;
+      itemIndex < this.heapContainer.length;
+      itemIndex += 1
+    ) {
       if (comparator.equal(item, this.heapContainer[itemIndex])) {
         foundItemIndices.push(itemIndex);
       }
@@ -203,8 +228,11 @@ export default class Heap {
     let currentIndex = customStartIndex || this.heapContainer.length - 1;
 
     while (
-      this.hasParent(currentIndex)
-      && !this.pairIsInCorrectOrder(this.parent(currentIndex), this.heapContainer[currentIndex])
+      this.hasParent(currentIndex) &&
+      !this.pairIsInCorrectOrder(
+        this.parent(currentIndex),
+        this.heapContainer[currentIndex]
+      )
     ) {
       this.swap(currentIndex, this.getParentIndex(currentIndex));
       currentIndex = this.getParentIndex(currentIndex);
@@ -223,18 +251,23 @@ export default class Heap {
 
     while (this.hasLeftChild(currentIndex)) {
       if (
-        this.hasRightChild(currentIndex)
-        && this.pairIsInCorrectOrder(this.rightChild(currentIndex), this.leftChild(currentIndex))
+        this.hasRightChild(currentIndex) &&
+        this.pairIsInCorrectOrder(
+          this.rightChild(currentIndex),
+          this.leftChild(currentIndex)
+        )
       ) {
         nextIndex = this.getRightChildIndex(currentIndex);
       } else {
         nextIndex = this.getLeftChildIndex(currentIndex);
       }
 
-      if (this.pairIsInCorrectOrder(
-        this.heapContainer[currentIndex],
-        this.heapContainer[nextIndex],
-      )) {
+      if (
+        this.pairIsInCorrectOrder(
+          this.heapContainer[currentIndex],
+          this.heapContainer[nextIndex]
+        )
+      ) {
         break;
       }
 

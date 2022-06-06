@@ -150,7 +150,7 @@ export default class Heap {
   remove(item, comparator = this.compare) {
     // Find number of items to remove.
     const numberOfItemsToRemove = this.find(item, comparator).length;
-
+    debugger;
     for (let iteration = 0; iteration < numberOfItemsToRemove; iteration += 1) {
       // We need to find item index to remove each time after removal since
       // indices are being changed after each heapify process.

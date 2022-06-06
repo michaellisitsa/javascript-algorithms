@@ -1,4 +1,4 @@
-import MaxHeap from '../MaxHeap';
+import MaxHeap from '../_MaxHeap.mjs';
 import Comparator from '../../../utils/comparator/Comparator';
 
 describe('MaxHeap', () => {
@@ -118,7 +118,6 @@ describe('MaxHeap', () => {
     expect(maxHeap.toString()).toBe('12,11,10,3,11');
 
     expect(maxHeap.remove(12).toString()).toEqual('11,11,10,3');
-    debugger;
     expect(maxHeap.remove(12).peek()).toEqual(11);
     expect(maxHeap.remove(11).toString()).toEqual('10,3');
     expect(maxHeap.remove(10).peek()).toEqual(3);
