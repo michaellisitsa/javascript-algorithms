@@ -157,7 +157,6 @@ export default class Heap {
       // use .find to get the top instance of item by index
       // (Since index is being regenerated each time, need
       // to also run find each time.)
-      debugger;
       const itemToDeleteIndex = this.find(item)[i];
       if (itemToDeleteIndex === this.heapContainer.length) {
         // Last child doesn't need to be heapified up.
